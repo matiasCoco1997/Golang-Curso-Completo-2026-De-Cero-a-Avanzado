@@ -17,9 +17,25 @@ func main() {
 
 	var firstName, lastName string
 	var age int = 28
+	var a byte = 'a'
+	var r rune = '❤'
 
 	firstName = "Matías"
 	lastName = "Coco"
 
-	fmt.Println(firstName, lastName, age)
+	fmt.Println(firstName, lastName, age, r, a)
+
+	//Valores default -------------------------------------------------------------------
+	var (
+		defaultInt    int
+		defauiltUint  uint
+		defaulFloat   float32
+		defaultBool   bool
+		defaultString string
+	)
+	fmt.Println("\nValores default")
+	fmt.Println(defaultInt, defauiltUint, defaulFloat, defaultBool, defaultString) //String es un espacio vacio por default
+
+	//Conversiones de tipos (son explicitas) -------------------------------------------------------------------
+
 }
