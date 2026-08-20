@@ -51,4 +51,24 @@ func main() {
 	var valorFinal int32 = int32(integer16) + integer32
 	fmt.Println(valorFinal, i, s)
 
+	//Paquete fmt -------------------------------------------------------------------
+
+	var nameTwo string
+	var ageTwo int
+
+	fmt.Print("Ingrese su nombre: ")
+	fmt.Scanln(&nameTwo)
+
+	fmt.Print("Ingrese su edad: ")
+	fmt.Scanln(&ageTwo)
+
+	fmt.Printf("Hola, me llamo %s y tengo %d años. \n", nameTwo, ageTwo) //"%s" espera un string, %d espera un número entero
+
+	greeting := fmt.Sprintf("Hola, me llamo %s y tengo %d años. \n", nameTwo, ageTwo)
+
+	fmt.Printf(greeting)
+
+	fmt.Printf("El tipo de nameTwo es: %T \n", nameTwo)
+	fmt.Printf("El tipo de ageTwo es: %T\n", ageTwo)
+
 }
