@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
 	"rsc.io/quote"
 )
@@ -37,5 +38,17 @@ func main() {
 	fmt.Println(defaultInt, defauiltUint, defaulFloat, defaultBool, defaultString) //String es un espacio vacio por default
 
 	//Conversiones de tipos (son explicitas) -------------------------------------------------------------------
+	var integer16 int16 = 50
+	var integer32 int32 = 100
+	s := "100"
+
+	i, _ := strconv.Atoi(s) //Convierte un string a entero y devuelve 2 valores un int y un posible error (La "_" es para no almacenar el error)
+
+	n := 42
+
+	s = strconv.Itoa(n)
+
+	var valorFinal int32 = int32(integer16) + integer32
+	fmt.Println(valorFinal, i, s)
 
 }
