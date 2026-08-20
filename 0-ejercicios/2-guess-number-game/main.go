@@ -2,95 +2,56 @@ package main
 
 import (
 	"fmt"
-	"runtime"
-	"time"
+	"math/rand/v2"
 )
 
 func main() {
+	play()
+}
 
-	t := time.Now().Hour()
+// funciones
+func play() {
+	numAleatorio := rand.IntN(100)
+	var numIngresado int
+	var intentos int
+	const maxIntentos = 10
 
-	if t < 12 {
-		fmt.Println("Mañana")
-	} else if t < 17 {
-		fmt.Println("tarde")
-	} else {
-		fmt.Println("noche")
-	}
+	for intentos < maxIntentos {
+		intentos++
+		fmt.Printf("Ingresa un numero: (intentos restantes %d): ", maxIntentos-intentos+1)
+		fmt.Scanln(&numIngresado)
 
-	//Se puede declarar una variable adentro del if
-	if t := time.Now().Hour(); t < 12 {
-		fmt.Println("Mañana")
-	} else if t < 17 {
-		fmt.Println("tarde")
-	} else {
-		fmt.Println("noche")
-	}
-
-	os := runtime.GOOS
-
-	switch os {
-	case "windows":
-		fmt.Println("Windows")
-
-	case "linux":
-		fmt.Println("Linux")
-
-	case "darwin":
-		fmt.Println("MAC")
-
-	default:
-		fmt.Println("Otro OS")
-	}
-
-	//inicializando una variable dentro del switch
-	switch os2 := runtime.GOOS; os2 {
-	case "windows":
-		fmt.Println("Windows")
-
-	case "linux":
-		fmt.Println("Linux")
-
-	case "darwin":
-		fmt.Println("MAC")
-
-	default:
-		fmt.Println("Otro OS")
-	}
-
-	// Bucle for ----------------------------------
-
-	for i := 1; i <= 10; i++ {
-		fmt.Println(i)
-		if i == 5 {
-			break
+		if numIngresado == numAleatorio {
+			fmt.Println("Felicitaciones adivinaste")
+			playAgain()
+			return
+		} else if numIngresado > numAleatorio {
+			fmt.Println("El número aleatorio es menor")
+		} else if numIngresado < numAleatorio {
+			fmt.Println("El número aleatorio es mayor")
 		}
+
 	}
 
-	fmt.Println(hello("matias"))
+	fmt.Println("Se acabaron los intentos, el número era:", numAleatorio)
 
-	fmt.Println(suma(1, 2))
-
-	//asigno los valores a variables
-	sum, prod := calc(4, 5)
-	fmt.Println("La suma es:", sum)
-	fmt.Println("El producto es:", prod)
-
+	playAgain()
 }
 
-//funciones
+func playAgain() {
+	var selec string
+	fmt.Println("Quieres jugar nuevamente? (s/n)")
+	fmt.Scanln(&selec)
 
-func hello(name string) string {
-	return "Hola, " + name
-}
+	switch selec {
+	case "s":
+		play()
 
-func suma(a, b int) int {
-	return a + b
-}
+	case "n":
+		fmt.Println("Gracias por jugar!")
 
-// se pueden retornar mas de un valor
-func calc(a, b int) (sum, prod int) {
-	sum = a + b
-	prod = a * b
-	return
+	default:
+		fmt.Println("Opción invalida")
+		playAgain()
+	}
 }
