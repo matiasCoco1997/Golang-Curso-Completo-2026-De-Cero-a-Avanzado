@@ -34,4 +34,30 @@ func main() {
 
 	fmt.Println(matriz)
 
+	//Slices (Rebanadas)
+	var a []int
+	diasSemana := []string{"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"}
+
+	diasRebanada := diasSemana[0:5] //desde el indice 0 al 5
+
+	diasRebanada = append(diasRebanada, "Viernes", "Sabado", "Otro dia")
+
+	diasRebanada = append(diasRebanada[0:2], diasRebanada[3:]...) // Eliminamos al indice 2 Martes
+
+	fmt.Println(a)
+	fmt.Println(diasSemana)
+	fmt.Println(diasRebanada)
+	fmt.Println(len(diasRebanada)) //Longitud del vector
+	fmt.Println(cap(diasRebanada)) //Cuánto puede crecer el slice desde su posición inicial hasta el final del array subyacente
+
+	//Funcion make
+	nombres := make([]string, 5, 10) // Tipo de dato - longitud - Capacidad
+	nombres[3] = "Matias"            //Agrego un elemento
+	fmt.Println(nombres)
+
+	//Funcion Copy
+	rebanadaUno := []int{1, 2, 3, 4, 5}
+	rebanadaDos := make([]int, 5)
+	copy(rebanadaDos, rebanadaUno)
+	fmt.Println(rebanadaDos, rebanadaUno) //El de la derecha copia los elementos del que esta a la izquierda
 }
