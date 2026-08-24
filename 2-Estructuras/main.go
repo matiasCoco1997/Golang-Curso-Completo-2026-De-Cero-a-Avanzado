@@ -60,4 +60,30 @@ func main() {
 	rebanadaDos := make([]int, 5)
 	copy(rebanadaDos, rebanadaUno)
 	fmt.Println(rebanadaDos, rebanadaUno) //El de la derecha copia los elementos del que esta a la izquierda
+
+	//Mapas
+	colors := map[string]string{
+		"rojo":  "#FF0000",
+		"verde": "#00FF00",
+		"azul":  "#0000FF",
+	}
+
+	//Agregar un elemento al mapa
+	colors["negro"] = "#000000"
+
+	valor, verificacionExistencia := colors["blanco"] // Si no existe el valor te devuelve un string vacio
+
+	fmt.Println(colors)
+	fmt.Println(colors["rojo"])
+
+	if verificacionExistencia {
+		fmt.Println(valor)
+	} else {
+		fmt.Println("No existe la clave ingresada")
+	}
+
+	//eliminar un elemento del mapa
+	delete(colors, "rojo")
+	fmt.Println(colors)
+
 }
