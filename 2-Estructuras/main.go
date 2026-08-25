@@ -2,8 +2,15 @@ package main
 
 import "fmt"
 
+//Creacion de una estructura
+type Persona struct {
+	nombre string
+	edad   int
+	correo string
+}
+
 func main() {
-	//Vectores
+	//Vectores***************************************************************************************************************************************
 	var vector [5]int // sin inicializar
 
 	var vectorDos = [5]int{10, 20, 30, 40, 50} //vector completamente incicializado
@@ -28,13 +35,13 @@ func main() {
 
 	fmt.Println(vector, vectorDos, vectorTres)
 
-	//Matriz bidimencional
+	//Matriz bidimencional***************************************************************************************************************************************
 
 	var matriz = [3][3]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
 
 	fmt.Println(matriz)
 
-	//Slices (Rebanadas)
+	//Slices (Rebanadas)***************************************************************************************************************************************
 	var a []int
 	diasSemana := []string{"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"}
 
@@ -50,18 +57,18 @@ func main() {
 	fmt.Println(len(diasRebanada)) //Longitud del vector
 	fmt.Println(cap(diasRebanada)) //Cuánto puede crecer el slice desde su posición inicial hasta el final del array subyacente
 
-	//Funcion make
+	//Funcion make***************************************************************************************************************************************
 	nombres := make([]string, 5, 10) // Tipo de dato - longitud - Capacidad
 	nombres[3] = "Matias"            //Agrego un elemento
 	fmt.Println(nombres)
 
-	//Funcion Copy
+	//Funcion Copy***************************************************************************************************************************************
 	rebanadaUno := []int{1, 2, 3, 4, 5}
 	rebanadaDos := make([]int, 5)
 	copy(rebanadaDos, rebanadaUno)
 	fmt.Println(rebanadaDos, rebanadaUno) //El de la derecha copia los elementos del que esta a la izquierda
 
-	//Mapas
+	//Mapas***************************************************************************************************************************************
 	colors := map[string]string{
 		"rojo":  "#FF0000",
 		"verde": "#00FF00",
@@ -86,4 +93,14 @@ func main() {
 	delete(colors, "rojo")
 	fmt.Println(colors)
 
+	//Estructuras***************************************************************************************************************************************
+	var p Persona
+	p.nombre = "Matias"
+	p.edad = 28
+	p.correo = "matias@gmail.com"
+
+	personaDos := Persona{"Matias", 28, "matias@gmail.com"}
+
+	fmt.Println(p)
+	fmt.Println(personaDos)
 }
