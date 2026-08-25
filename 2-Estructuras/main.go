@@ -2,11 +2,15 @@ package main
 
 import "fmt"
 
-//Creacion de una estructura
+// Definición de una estructura (struct).
 type Persona struct {
 	nombre string
 	edad   int
 	correo string
+}
+
+func (p *Persona) diHola() { // El método pertenece al tipo Persona y recibe un puntero a una Persona.
+	fmt.Println("Hola mi nobmre es ", p.nombre)
 }
 
 func main() {
@@ -15,7 +19,7 @@ func main() {
 
 	var vectorDos = [5]int{10, 20, 30, 40, 50} //vector completamente incicializado
 
-	var vectorTres = [...]int{10, 20, 30, 40, 50} //los 3 puntos es para incializarlo pero no sabemos cuantos elementos posee
+	var vectorTres = [...]int{10, 20, 30, 40, 50} // [...] permite que Go determine automáticamente la cantidad de elementos.
 
 	vector[0] = 1 //modificar el vector en una posicion especifica
 
@@ -49,7 +53,7 @@ func main() {
 
 	diasRebanada = append(diasRebanada, "Viernes", "Sabado", "Otro dia")
 
-	diasRebanada = append(diasRebanada[0:2], diasRebanada[3:]...) // Eliminamos al indice 2 Martes
+	diasRebanada = append(diasRebanada[0:2], diasRebanada[3:]...) // Eliminamos al indice 2 Martes (reconstruimos el slice sin "martes")
 
 	fmt.Println(a)
 	fmt.Println(diasSemana)
@@ -66,7 +70,7 @@ func main() {
 	rebanadaUno := []int{1, 2, 3, 4, 5}
 	rebanadaDos := make([]int, 5)
 	copy(rebanadaDos, rebanadaUno)
-	fmt.Println(rebanadaDos, rebanadaUno) //El de la derecha copia los elementos del que esta a la izquierda
+	fmt.Println(rebanadaDos, rebanadaUno) //copy(destino, origen) - Copia los elementos de rebanadaUno (origen) en rebanadaDos (destino).
 
 	//Mapas***************************************************************************************************************************************
 	colors := map[string]string{
@@ -103,4 +107,21 @@ func main() {
 
 	fmt.Println(p)
 	fmt.Println(personaDos)
+
+	//Punteros y metodos***************************************************************************************************************************************
+	var x int = 10
+	//var puntero *int = &x // &x obtiene la dirección de memoria de x. Un puntero guarda esa dirección y permite acceder/modificar el valor original.
+
+	fmt.Println(x)
+	editar(&x) // &x obtiene la dirección de memoria de x y se la pasa a editar.
+	fmt.Println(x)
+
+	//METODO CON PUNTEROS
+	personaTres := Persona{"Matias", 28, "matias@gmail.com"}
+	personaTres.diHola()
+}
+
+// Recibe un puntero a un entero y modifica directamente el valor original.
+func editar(x *int) {
+	*x = 20
 }
